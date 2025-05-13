@@ -24,7 +24,7 @@ const setLighting = (scene: THREE.Scene) => {
       texture.mapping = THREE.EquirectangularReflectionMapping;
       scene.environment = texture;
       scene.environmentIntensity = 0;
-      scene.environmentRotation.set(5.76, 85.85, 1);
+      scene.environmentRotation.set(5.76, 85.85, 1); // Ensure this is valid
     });
 
   function setPointLight(screenLight: any) {
@@ -34,8 +34,10 @@ const setLighting = (scene: THREE.Scene) => {
       pointLight.intensity = 0;
     }
   }
+
   const duration = 2;
   const ease = "power2.inOut";
+
   function turnOnLights() {
     gsap.to(scene, {
       environmentIntensity: 0.64,

@@ -1,3 +1,13 @@
+:root {
+  --cWidth: 100%;
+  --accentColor: #ff6f61;
+  --textColor: #333;
+  --fontSizeSmall: 1.25rem;
+  --fontSizeLarge: 2rem;
+  --lineHeight: 1.6;
+  --paddingVertical: 50px;
+}
+
 .about-section {
   display: flex;
   align-items: center;
@@ -9,25 +19,28 @@
   width: var(--cWidth);
   margin: auto;
 }
+
 .about-me {
-  padding: 50px 0px;
+  padding: var(--paddingVertical) 0;
   padding-bottom: 0;
   width: 500px;
   max-width: calc(100% - 15px);
 }
+
 .about-me h3 {
-  font-size: 25px;
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 7px;
   font-weight: 400;
   color: var(--accentColor);
 }
 
-.about-me p {
-  font-size: 33px;
+.about-me .about-description {
+  font-size: clamp(var(--fontSizeSmall), 5vw, var(--fontSizeLarge));
   font-weight: 600;
-  line-height: 36px;
+  line-height: var(--lineHeight);
   letter-spacing: 1px;
+  color: var(--textColor);
 }
 
 @media only screen and (min-width: 600px) {
@@ -35,36 +48,42 @@
     justify-content: center;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .about-me {
     width: 500px;
     max-width: calc(100% - 70px);
     transform: translateY(0%);
   }
+
   .about-section {
     opacity: 1;
   }
 }
+
 @media only screen and (min-width: 1025px) {
   .about-section {
     width: var(--cWidth);
     justify-content: right;
     max-width: 1920px;
     height: var(--vh);
-    padding: 0px;
+    padding: 0;
     opacity: 1;
   }
+
   .about-me {
-    padding: 0px;
+    padding: 0;
     width: 50%;
   }
-  .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+
+  .about-me .about-description {
+    font-size: clamp(1.5rem, 1.9vw, 2.3rem);
+    line-height: clamp(2rem, 2.3vw, 2.7rem);
   }
 }
+
 @media only screen and (min-width: 1950px) {
-  .about-me p {
+  .about-me .about-description {
     font-size: 2.5rem;
     line-height: 2.7rem;
   }

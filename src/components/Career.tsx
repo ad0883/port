@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/Career.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Career = () => {
+  useEffect(() => {
+    const timeline = document.querySelector(".career-timeline");
+    const dot = document.querySelector(".career-dot");
+
+    if (timeline && dot) {
+      // Set initial styles
+      gsap.set(timeline, { height: 0 }); // Start with no height
+      gsap.set(dot, { y: 0 }); // Start with the dot at the bottom
+
+      // Animate the timeline and dot as the user scrolls
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ".career-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: true,
+        },
+      })
+        .to(timeline, { height: "100%", ease: "power1.out" }) // Grow the timeline
+        .to(dot, { y: "100%", ease: "power1.out" }, "<"); // Move the dot down
+    }
+  }, []);
+
   return (
     <div className="career-section section-container">
       <div className="career-container">
@@ -21,9 +49,11 @@ const Career = () => {
               <h3>2023-27</h3>
             </div>
             <p>
-            B.Tech CSE student at SRMIST Delhi-NCR, passionate about AI/ML,full-stack development,and emerging technologies.
-            Actively contributing to HackHound,the official tech club,through hackathons,workshops and projects.
-            Constantly learning, innovating, and building impactful tech solutions!
+              B.Tech CSE student at SRMIST Delhi-NCR, passionate about AI/ML,
+              full-stack development, and emerging technologies. Actively
+              contributing to HackHound, the official tech club, through
+              hackathons, workshops, and projects. Constantly learning,
+              innovating, and building impactful tech solutions!
             </p>
           </div>
           <div className="career-info-box">
@@ -35,9 +65,12 @@ const Career = () => {
               <h3>2024</h3>
             </div>
             <p>
-            I would play a crucial role in both the technical and creative aspects of the the only official independent technical club of SRMIST Delhi-NCR.
-            On the AI/ML front,I assist participants working on machine learning projects by providing technical support, 
-            suggesting relevant frameworks,and helping organize AI-related workshops and mentorship sessions.
+              I would play a crucial role in both the technical and creative
+              aspects of the only official independent technical club of SRMIST
+              Delhi-NCR. On the AI/ML front, I assist participants working on
+              machine learning projects by providing technical support,
+              suggesting relevant frameworks, and helping organize AI-related
+              workshops and mentorship sessions.
             </p>
           </div>
           <div className="career-info-box">
@@ -49,7 +82,9 @@ const Career = () => {
               <h3>NOW</h3>
             </div>
             <p>
-            Gaining hands-on experience in fintech,data analytics and financial innovation | Exploring the intersection of technology and finance.
+              Gaining hands-on experience in fintech, data analytics, and
+              financial innovation. Exploring the intersection of technology
+              and finance.
             </p>
           </div>
         </div>
